@@ -1,3 +1,99 @@
+Yellow_Dom
+yellow_dom
+Idle
+
+markypoo — 10/09/2023 10:21 AM
+heya tech e's (cecsy people)
+
+u wanna meet over discord and discuss what approaches would be best (programming language, base station?, telemetry, etc?)
+bao — 10/09/2023 10:57 AM
+yes we should
+cole — 10/09/2023 11:05 AM
+If {sand} move {forward};
+If {not} move {any}, then {cry};
+If {sand} scoop {yes};
+
+Guys it's not that hard
+markypoo — 10/09/2023 11:48 AM
+shut up mechy
+but yeah that’s basically it
+kaiya — 10/09/2023 1:10 PM
+this looks ab right
+cole — 10/09/2023 1:10 PM
+I deserve all the credit for the coding of Sandman guys
+markypoo — 11/22/2023 1:18 PM
+temp:
+
+int leftPin = 4;
+int back = 4;
+
+int rightPin = 5;
+int forward = 5;
+
+int forwardPin = 6;
+int up = 6;
+
+int backPin = 7;
+int down = 7;
+
+int rearLeft = 8;
+int rearRight = 9;
+int armServo = 10;
+
+void setup() {
+  pinMode(leftPin, INPUT);
+  pinMode(rightPin, INPUT);
+  pinMode(forwardPin, INPUT);
+  pinMode(backPin, INPUT);
+  
+  pinMode(rearLeft, OUTPUT);
+  pinMode(rearRight, OUTPUT);
+  pinMode(armServo, OUTPUT);
+
+  Serial.begin(9600);
+
+
+}
+
+void loop() {
+  // Forward will set both rear wheels to high
+  while (digitalRead(forward) == HIGH) {
+    Serial.println("Forward pin active");
+    delay(1000);
+  }
+
+
+}
+markypoo
+ started a thread: 
+Servo doesnt work
+. See all 
+threads
+.
+ — 11/22/2023 5:56 PM
+Thread
+Servo doesnt work
+2 Messages ›
+There are no recent messages in this thread.
+markypoo — 12/01/2023 12:15 PM
+#include <LSS.h>
+
+LSS myLSS;
+
+// Input pins
+int leftPin = 4;
+Expand
+message.ino
+4 KB
+gisselle — 12/01/2023 12:33 PM
+let’s put a ss of it on the slides
+?
+markypoo — 12/01/2023 12:57 PM
+of the code?
+okay, but its not done yet
+gisselle — 12/01/2023 2:00 PM
+okay yeah whenever it is done we can add it in
+﻿
 #include <LSS.h>
 
 LSS myLSS;
@@ -98,4 +194,73 @@ void loop() {
   //clearLocomotion();
 
   // // No backwards functionality on circuit
-... (70 lines left)
+  // if (backward && 0) {
+  //   Serial.println("Backwards attempted (lol)");
+  //   goBackward();
+  // }
+
+  // Delay before continuing loop (polling rate)
+  delay(50);
+}
+
+void runServo() {
+  if (!servoReady) { return; }
+
+  servoReady = 0;
+  Serial.println("Servo booked.");
+
+  clearLocomotion();
+  delay(250);
+
+  myLSS.move(200);
+  // go forward
+  delay(1000);  // to scoop
+  // stop going forward
+  myLSS.move(-950);
+  // go backwards
+  delay(1500);  // to jolt sand out of arm
+
+
+  // arm back to normal position
+  myLSS.move(0);
+  delay(1000);  // to scoop
+
+  servoReady = 1;
+
+  Serial.println("Servo ready for input!");
+}
+
+void goForward() {
+      Serial.println("Sandman -- Locomotion");
+      Serial.println("\t Forward");
+
+      digitalWrite(rearLeft, HIGH);
+      digitalWrite(rearRight, HIGH);
+}
+
+void goBackward() {
+      Serial.println("Sandman -- Locomotion");
+      Serial.println("\t Backward");
+}
+
+void goLeft() {
+      Serial.println("Sandman -- Locomotion");
+      Serial.println("\t Left");
+      digitalWrite(rearRight, HIGH);
+}
+
+void goRight() {
+      Serial.println("Sandman -- Locomotion");
+      Serial.println("\t Right");
+      digitalWrite(rearLeft, HIGH);
+}
+
+void clearLocomotion() {
+  digitalWrite(rearLeft, LOW);
+  digitalWrite(rearRight, LOW);
+  delay(250);
+}
+
+void demoMode() {
+
+}

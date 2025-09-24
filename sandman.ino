@@ -1,28 +1,4 @@
-Yellow_Dom
-yellow_dom
-Idle
 
-markypoo — 10/09/2023 10:21 AM
-heya tech e's (cecsy people)
-
-u wanna meet over discord and discuss what approaches would be best (programming language, base station?, telemetry, etc?)
-bao — 10/09/2023 10:57 AM
-yes we should
-cole — 10/09/2023 11:05 AM
-If {sand} move {forward};
-If {not} move {any}, then {cry};
-If {sand} scoop {yes};
-
-Guys it's not that hard
-markypoo — 10/09/2023 11:48 AM
-shut up mechy
-but yeah that’s basically it
-kaiya — 10/09/2023 1:10 PM
-this looks ab right
-cole — 10/09/2023 1:10 PM
-I deserve all the credit for the coding of Sandman guys
-markypoo — 11/22/2023 1:18 PM
-temp:
 
 int leftPin = 4;
 int back = 4;
